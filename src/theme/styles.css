@@ -3,7 +3,7 @@ body {
 	margin: 0;
 }
 
-.workout {
+.card-workout {
 	display: inline-block;
 	margin: 20px 20px;
 	padding-bottom: 20px;
@@ -13,6 +13,10 @@ body {
 
 .bg-contain {
 	background-size: contain;
+}
+
+.bg-white img {
+	background-color: #efefef;
 }
 
 .center-inline {
