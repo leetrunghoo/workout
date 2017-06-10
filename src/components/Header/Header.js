@@ -4,7 +4,7 @@ import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 export default class Header extends Component {
 	render() {
 		let onLeftIconClick = () => this.props.toggleDrawerActive();
-		let leftIcon = 'menu';
+		let leftIcon = '';
 		if (window.location.pathname !== '/') {
 			onLeftIconClick = () => window.history.back();
 			leftIcon = 'arrow_back';
