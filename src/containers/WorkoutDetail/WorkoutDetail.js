@@ -85,7 +85,9 @@ export default class WorkoutDetail extends PureComponent {
 							!playing ? 
 								<Counter 
 									nextStepName={stepActive ? `Next: ${step.name}` : `Start with: ${step.name}`}
-									count={counterWaiting} />
+									count={counterWaiting}
+									photos={step.photos}
+								/>
 							: <Exercise data={step} count={counterExercise} />
 						)
 				}
