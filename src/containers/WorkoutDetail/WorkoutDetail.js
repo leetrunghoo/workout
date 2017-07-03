@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import { workoutListData } from '../../data/workoutList';
 import Counter from '../../components/Counter/Counter';
 import Exercise from '../../components/Exercise/Exercise';
+import { speak } from '../../helpers/util';
 
 let timeout = null;
 const countBack = (counter, countCallback, doneCallback) => {
@@ -29,6 +30,9 @@ export default class WorkoutDetail extends PureComponent {
 			workoutData,
 			stepActive: 0,
 		});
+		if (workoutData) {
+			speak(`Starting with ${workoutData.steps[0].name}`);
+		}
   }
 
   componentDidUpdate() {
@@ -76,6 +80,23 @@ export default class WorkoutDetail extends PureComponent {
 	render() {
 		const { done, playing, counterWaiting, counterExercise, workoutData, stepActive } = this.state;
 		const step = workoutData.steps ? workoutData.steps[stepActive] : {};
+		if (!playing && counterWaiting <= 3) {
+			const message = counterWaiting || 'go';
+			speak(message);
+		}
+		if (playing && counterExercise <= 3) {
+			let message = counterExercise;
+			if (counterExercise === 0) {
+				const nextStep = workoutData.steps[stepActive+1];
+				if (nextStep) {
+					message = `next, ${nextStep.name}`;
+				}
+			}
+			speak(message);
+		}
+		if (done) {
+			speak("Congratulation! You've finished. Want to try again?");
+		}
 		return (
 			<div className="workout-detail">
 				{
