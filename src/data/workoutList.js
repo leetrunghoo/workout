@@ -35,7 +35,7 @@ export const workoutListData = [
 			},
 			{
 				name: 'Squat',
-				photos: ['/img/Squat_1.svg', '/img/Squat_2.svg'],
+				photos: ['/img/squat_1.svg', '/img/squat_2.svg'],
 				times: 30,
 			},
 			{
